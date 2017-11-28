@@ -66,6 +66,10 @@ public:
 	 */
 	virtual ThermoPhase* duplMyselfAsThermoPhase() const;
 
+    virtual std::string type() const {
+        return "ConstDensityTabultedThermo";
+    }
+
 	//! This method returns an array of generalized concentrations
 	/*!
 	 * \f$ C^a_k\f$ are defined such that \f$ a_k = C^a_k /
@@ -91,12 +95,6 @@ public:
 	 * @param ac Output vector of activity coefficients. Length: m_kk.
 	 */
 	virtual void getActivityCoefficients(doublereal* ac) const;
-
-    //! Was added because of the DENIS LFP Runaway simulation.
-    virtual void getPartialMolarEnthalpies(doublereal* result) const;
-
-    //! Was added because of the DENIS LFP Runaway simulation.
-    virtual void getPartialMolarEntropies(doublereal* result) const;
 
 	//! Return the standard concentration for the kth species
 	/*!

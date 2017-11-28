@@ -159,9 +159,8 @@ protected:
     //! Current pressure (Pa)
     doublereal m_press;
 
-private:
     //! Function to update the reference state thermo functions
-    void _updateThermo() const;
+    virtual void _updateThermo() const;
 };
 }
 

@@ -79,7 +79,8 @@ static int _itypes[] = {cIdealGas, cIncompressible,
                         cMineralEQ3, cMetalSHEelectrons,
                         cMargulesVPSSTP, cPhaseCombo_Interaction, cIonsFromNeutral, cFixedChemPot,
                         cMolarityIonicVPSSTP, cMixedSolventElectrolyte, cRedlichKisterVPSSTP,
-                        cRedlichKwongMFTP, cRedlichKwongMFTP, cMaskellSolidSolnPhase
+                        cRedlichKwongMFTP, cRedlichKwongMFTP, cMaskellSolidSolnPhase, cConstDensityTabulatedThermo,
+						cIdealSolidSolutionTabulatedThermo
 						};
 
 ThermoFactory::ThermoFactory()

@@ -696,7 +696,6 @@ protected:
     //! Temporary array used in equilibrium calculations
     mutable vector_fp m_pp;
 
-private:
     /// @name Utility Functions
     //@{
     /**
@@ -706,7 +705,7 @@ private:
      * the temperature has changed, the species thermo manager is called to
      * recalculate G, Cp, H, and S at the current temperature.
      */
-    void _updateThermo() const;
+    virtual void _updateThermo() const;
 
     //@}
 };

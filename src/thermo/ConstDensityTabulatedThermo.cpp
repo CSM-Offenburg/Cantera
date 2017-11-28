@@ -61,26 +61,6 @@ void ConstDensityTabulatedThermo::getActivityCoefficients(doublereal* ac) const
 	}
 }
 
-void ConstDensityTabulatedThermo::getPartialMolarEnthalpies(doublereal* result) const {
-	doublereal vdp = (pressure() - m_spthermo->refPressure()) / molarDensity();
-	doublereal rt = temperature() * GasConstant;
-	const vector_fp& h_RT = enthalpy_RT();
-	for (size_t k = 0; k < m_kk; k++) {
-		result[k] = rt*h_RT[k] + vdp;
-	}
-}
-
-void ConstDensityTabulatedThermo::getPartialMolarEntropies(doublereal* result) const {
-	doublereal xx;
-	doublereal r = GasConstant;
-	const vector_fp& s_R = entropy_R();
-	for (size_t k = 0; k < m_kk; k++) {
-		xx = moleFraction(k);
-		if(xx < SmallNumber) xx = SmallNumber;
-		result[k] = r*(s_R[k] - log(xx));
-	}
-}
-
 doublereal ConstDensityTabulatedThermo::standardConcentration(size_t k) const
 {
 	return 1;
@@ -189,6 +169,7 @@ void ConstDensityTabulatedThermo::initThermoXML(XML_Node& phaseNode, const std::
 				throw CanteraError("ConstDensityTabulatedThermo::initThermoXML",
 						"Unspecified modifiable species");
 			}
+			m_xlast = moleFraction(m_kk_mod);
 		} else {
 			throw CanteraError("ConstDensityTabulatedThermo::initThermoXML",
 					"Unknown thermo model : " + model);

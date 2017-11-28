@@ -66,6 +66,10 @@ public:
      */
     virtual ThermoPhase* duplMyselfAsThermoPhase() const;
 
+    virtual std::string type() const {
+        return "IdealSolidSolutionTabultedThermo";
+    }
+
     //! Was added because of the DENIS LFP Runaway simulation.
     virtual void getPartialMolarEnthalpies(doublereal* result) const;
 

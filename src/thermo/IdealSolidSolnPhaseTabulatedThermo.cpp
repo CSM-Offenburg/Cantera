@@ -182,6 +182,7 @@ void IdealSolidSolnPhaseTabulatedThermo::initThermoXML(XML_Node& phaseNode, cons
 				throw CanteraError("IdealSolidSolnPhaseTabulatedThermo::initThermoXML",
 						"Species " + modifiable_species_name + " not found.");
 			}
+			m_xlast = moleFraction(m_kk_mod);
 		} else {
 			throw CanteraError("IdealSolidSolnPhaseTabulatedThermo::initThermoXML",
 					"Unspecified modifiable species");

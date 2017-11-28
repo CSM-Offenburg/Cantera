@@ -37,7 +37,7 @@ const int cHarmonicOsc = 4;
  */
 const int cIdealGas = 1; // IdealGasPhase in IdealGasPhase.h
 const int cIncompressible = 2; // ConstDensityThermo in ConstDensityThermo.h
-const int cIntercalation = 1110; // Intercalation in Intercalation.h
+
 /// A surface phase. Used by class SurfPhase.
 const int cSurf = 3;
 
@@ -101,17 +101,21 @@ const int cVPSS_HMW = 1040;
 const int cVPSS_DebyeHuckel = 1050;
 const int cVPSS_MolalSoln = 1060;
 
+//! Tabulated thermo phases
+const int cConstDensityTabulatedThermo = 1110;
+const int cIdealSolidSolutionTabulatedThermo = 1111;
+
 //! Types of PDSS's
 //! @deprecated Unused. To be removed after Cantera 2.3.
 enum PDSS_enumType {
-    cPDSS_UNDEF = 100,
-    cPDSS_IDEALGAS,
-    cPDSS_CONSTVOL,
-    cPDSS_SSVOL,
-    cPDSS_MOLAL_CONSTVOL,
-    cPDSS_WATER,
-    cPDSS_MOLAL_HKFT,
-    cPDSS_IONSFROMNEUTRAL
+    cPDSS_UNDEF = 100,   //!< cPDSS_UNDEF
+    cPDSS_IDEALGAS,      //!< cPDSS_IDEALGAS
+    cPDSS_CONSTVOL,      //!< cPDSS_CONSTVOL
+    cPDSS_SSVOL,         //!< cPDSS_SSVOL
+    cPDSS_MOLAL_CONSTVOL,//!< cPDSS_MOLAL_CONSTVOL
+    cPDSS_WATER,         //!< cPDSS_WATER
+    cPDSS_MOLAL_HKFT,    //!< cPDSS_MOLAL_HKFT
+    cPDSS_IONSFROMNEUTRAL//!< cPDSS_IONSFROMNEUTRAL
 };
 
 //! enum for VPSSMgr types that are responsible for calculating the species
