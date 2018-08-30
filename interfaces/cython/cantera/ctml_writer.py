@@ -2218,6 +2218,42 @@ class ConstDensityTabulatedThermo(phase):
             t['model'] = self._tr
         k = ph.addChild("kinetics")
         k['model'] = 'none'
+        
+class IdealSolidSolution(phase):
+    """An IdealSolidSolution phase."""
+    def __init__(self,
+                 name = '',
+                 elements = '',
+                 species = '',
+                 note = '',
+                 density = None,
+                 transport = 'None',
+                 initial_state = None,
+                 standard_concentration = None,
+                 options = []):
+
+        phase.__init__(self, name, 3, elements, species, note, 'None',
+                       initial_state, options)
+        self._pure = 0
+        self._stdconc = standard_concentration
+        if self._stdconc is None:
+            raise CTI_Error('In phase '+name+': standard_concentration must be specified.')
+        self._tr = transport
+
+    def conc_dim(self):
+        return (1,-3)
+
+    def build(self, p):
+        ph = phase.build(self, p)
+        e = ph.child("thermo")
+        e['model'] = 'IdealSolidSolution'
+        if self._tr:
+            t = ph.addChild('transport')
+            t['model'] = self._tr
+        k = ph.addChild("kinetics")
+        k['model'] = 'none'
+        sc = ph.addChild('standardConc')
+        sc['model'] = self._stdconc
 
 class IdealSolidSolutionTabulatedThermo(phase):
     """An IdealSolidSolutionTabulatedThermo phase."""
